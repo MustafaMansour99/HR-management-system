@@ -22,9 +22,35 @@ main {
     font-family: 'Righteous', cursive;
 
 }
-footer{
+p,h3,img{
+    padding: 0;
+    margin: 0;
+}
+
+
+#employee{
+    display: flex;
+    flex-wrap: wrap;  
+    gap: 20px; 
+    padding: 30px; 
+ }
+ .card{
+    background-color: #481866fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    height: 350px;
+    padding: 10px 10px;
+    box-shadow: -4px -2px 1px 3px #888888;
+    border-radius: 20px;
+
+ }
+ footer{
     background-color: blueviolet;
-    display: flex;    
+    display: flex;
+    width: 100%;
+    height: 100%;
     justify-content: space-between;
     align-items: center;
  }
@@ -40,5 +66,4 @@ footer{
     float: left;
     margin:25px;
     font-size: 20px;
-
  }
