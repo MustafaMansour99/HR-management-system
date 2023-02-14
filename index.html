@@ -1,31 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/4f7fe5e387.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
 
     <title>HR-managment-system</title>
 </head>
+
 <body>
     <header>
         <section id="1-sect">
             <nav>
                 <ul>
-                  <li><a href="./index.html">Home</a></li>
-                  <li><a href="./index.html">Menu</a></li>
-                  <li><a href="./accounting.html">accounting</a></li>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./index.html">Menu</a></li>
+                    <li><a href="./accounting.html">accounting</a></li>
                 </ul>
-              </nav>
-              
+            </nav>
+
         </section>
     </header>
     <main>
-         <script src="./app.js"></script>
+        <form id="addEmployee">
+            <fieldset>
+                <legend>Add new Employee</legend>
+                <label for="name">Full name:</label>
+                <input type="text" name="name" id="name" placeholder="Employee Name">
+
+                <br />
+                <br />
+
+                <label for="Department">Choose a Department:</label>
+
+                <select id="Department" name="Department">
+                    <option value="Administration">Administration</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Development">Development</option>
+                    <option value="Finance">Finance</option>
+                </select>
+                <br />
+                <br />
+
+                <label for="Level">Choose a Level :</label>
+
+                <select id="Level" name="Level">
+                    <option value="Junior">Junior</option>
+                    <option value="Mid-Senior">Mid-Senior</option>
+                    <option value="Senior">Senior</option>
+                </select>
+
+                <br />
+                <br />
+                <label for="imgUrl">Image:</label>
+                <input type="text" name="imgUrl" id="imgUrl" placeholder="image path">
+                <br />
+                <br />
+                <input type="submit" value="submit">
+            </fieldset>
+        </form>
+
+        <section id="employee"></section>
+
     </main>
     <footer>
         <section class="social-media">
@@ -38,7 +79,9 @@
         <section class="copyright">
             <p> &copy; All right reserved </p>
         </section>
+        <script src="./js/app.js"></script>
 
     </footer>
 </body>
+
 </html>
