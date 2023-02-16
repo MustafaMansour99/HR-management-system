@@ -1,5 +1,5 @@
 'use strict';
-
+let arrEm = [];
 function Employee(fullName, department, level, imageUrl) {
     this.employeeId = 0;
     this.fullName = fullName;
@@ -7,6 +7,7 @@ function Employee(fullName, department, level, imageUrl) {
     this.level = level;
     this.imageUrl = imageUrl;
     this.salary = 0;
+    arrEm.push(this);
 }
 Employee.prototype.calculating = function () {
     switch (this.level) {
@@ -24,47 +25,53 @@ Employee.prototype.calculating = function () {
     }
     return this.salary - (this.salary * 0.075);
 }
-  Employee.prototype.generateEmployeeId= function ()
-   {
-    return (this.employeeId = Number(Math.floor(Math.random() * Date.now()).toString().slice(0,4)));
-   };
+Employee.prototype.generateEmployeeId = function () {
+    return (this.employeeId = Number(Math.floor(Math.random() * Date.now()).toString().slice(0, 4)));
+};
 
 
- Employee.prototype.render = function () {
-   // document.write(`Full name: ${this.fullName} //Employee salary: ${this.salary} <br/>`);
-   const container = document.getElementById('employee');
+function render() {
+    // document.write(`Full name: ${this.fullName} //Employee salary: ${this.salary} <br/>`);
+    const container = document.getElementById('employee');
+    container.innerHTML = '';
+    getallEmployee();
+    if (arrEm == null) { //localstorage is empty
+        arrEm = [];
+    }
+    for (let i = 0; i < arrEm.length; i++) {
 
-   const divEm =document.createElement('div');
-   divEm.classList.add('card');
-   container.appendChild(divEm);
+
+        const divEm = document.createElement('div');
+        divEm.classList.add('card');
+        container.appendChild(divEm);
 
 
-   const nameEm = document.createElement('h3');
-   divEm.appendChild(nameEm);
-   nameEm.textContent =`name : ${this.fullName}`;
+        const nameEm = document.createElement('h3');
+        divEm.appendChild(nameEm);
+        nameEm.textContent = `name : ${arrEm[i].fullName}`;
 
-   const imgEm = document.createElement('img');
-   divEm.appendChild(imgEm);
-   imgEm.setAttribute('src',this.imageUrl);
-   imgEm.width = "150";
-   imgEm.height = "150";
+        const imgEm = document.createElement('img');
+        divEm.appendChild(imgEm);
+        imgEm.setAttribute('src', arrEm[i].imageUrl);
+        imgEm.width = "150";
+        imgEm.height = "150";
 
-   const depEm =document.createElement('p');
-   divEm.appendChild(depEm);
-   depEm.textContent =`Department: ${this.department}`;
+        const depEm = document.createElement('p');
+        divEm.appendChild(depEm);
+        depEm.textContent = `Department: ${arrEm[i].department}`;
 
-   const levEm =document.createElement('p');
-   divEm.appendChild(levEm);
-   levEm.textContent = `level: ${this.level}`;
+        const levEm = document.createElement('p');
+        divEm.appendChild(levEm);
+        levEm.textContent = `level: ${arrEm[i].level}`;
 
-   const salEm =document.createElement('p');
-   divEm.appendChild(salEm);
-   salEm.textContent =`salary: ${this.salary}`;
+        const salEm = document.createElement('p');
+        divEm.appendChild(salEm);
+        salEm.textContent = `salary: ${arrEm[i].salary}`;
 
-   const idEm =document.createElement('p');
-   divEm.appendChild(idEm);
-   idEm.textContent =`ID: ${this.employeeId}` ;
-
+        const idEm = document.createElement('p');
+        divEm.appendChild(idEm);
+        idEm.textContent = `ID: ${arrEm[i].employeeId}`;
+    }
 }
 let employeeForm = document.getElementById("addEmployee");
 employeeForm.addEventListener('submit', addNewEmployeeHandler);
@@ -80,9 +87,22 @@ function addNewEmployeeHandler(event) {
     let newOne = new Employee(fullName, department, level, imageUrl);
     newOne.calculating();
     newOne.generateEmployeeId();
-    newOne.render();
+
+    // convert into JSOn then store the Arr in the local storage
+    let jsonArr = JSON.stringify(arrEm);
+    localStorage.setItem("allPepole", jsonArr);
+
+    render();
 
 }
+
+function getallEmployee() {
+    let jsonArr = localStorage.getItem("allPepole");
+    arrEm = JSON.parse(jsonArr);
+}
+getallEmployee();
+render();
+
 
   // let employee1 = new Employee(1000, "Ghazi Samer", "Administration", "Senior","",);
     //let employee2 = new Employee(1001, "Lana Ali", "Finance", "Senior","",);
