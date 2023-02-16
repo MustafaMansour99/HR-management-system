@@ -33,12 +33,12 @@ function render(){
     {
         arr=[];
     }
-    //the main table
+    //the main table ..
     const table =document.createElement("table");
     cont.appendChild(table);
     table.setAttribute("border","3");
     table.setAttribute("width","100%");
-    //table contant (tr):
+    //table contant (tr):..
     const tr = document.createElement("tr");
     table.appendChild(tr);
     //th1
@@ -61,7 +61,7 @@ function render(){
     // new tr for the td :
     const tr2 = document.createElement("tr");
     table.appendChild(tr2);
-    //td for adminsatore
+    //td for adminsatore ..
     const td1 =document.createElement("td");
     tr2.appendChild(td1);
     td1.textContent="Administration";
@@ -81,7 +81,7 @@ function render(){
     tda3.textContent =totalSalary(newArr);
 
 
-    //new tr for marketing
+    //new tr for marketing ..
     const tr3 = document.createElement("tr");
     table.appendChild(tr3);
     //td
